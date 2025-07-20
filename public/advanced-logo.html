@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html dir="rtl" lang="he">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>מתכונטק - לוגו מתקדם</title>
+    <style>
+        .logo-container {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            padding: 25px;
+            border-radius: 20px;
+            box-shadow: 0 15px 35px rgba(102, 126, 234, 0.4);
+            max-width: 400px;
+            margin: 20px auto;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .logo-container::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: linear-gradient(45deg, transparent, rgba(255,255,255,0.1), transparent);
+            transform: rotate(45deg);
+            animation: shine 3s infinite;
+        }
+        
+        .logo-icon {
+            position: relative;
+            margin-left: 20px;
+            z-index: 2;
+        }
+        
+        .chef-hat {
+            width: 60px;
+            height: 60px;
+            background: white;
+            border-radius: 50% 50% 50% 50% / 60% 60% 40% 40%;
+            position: relative;
+            animation: float 3s ease-in-out infinite;
+        }
+        
+        .chef-hat::before {
+            content: '';
+            position: absolute;
+            top: 45px;
+            left: 5px;
+            width: 50px;
+            height: 15px;
+            background: white;
+            border-radius: 25px;
+        }
+        
+        .chef-hat::after {
+            content: '< / >';
+            position: absolute;
+            top: 15px;
+            left: 15px;
+            color: #667eea;
+            font-size: 16px;
+            font-weight: bold;
+            font-family: 'Courier New', monospace;
+        }
+        
+        .logo-text {
+            position: relative;
+            z-index: 2;
+        }
+        
+        .main-title {
+            color: white;
+            font-size: 32px;
+            font-weight: 900;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+            margin: 0;
+            letter-spacing: -1px;
+        }
+        
+        .subtitle {
+            color: #FFD700;
+            font-size: 14px;
+            font-weight: 600;
+            margin: 5px 0 0 0;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+        
+        .tech-elements {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            color: rgba(255,255,255,0.3);
+            font-size: 12px;
+            font-family: 'Courier New', monospace;
+        }
+        
+        @keyframes float {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-10px); }
+        }
+        
+        @keyframes shine {
+            0% { transform: translateX(-100%) translateY(-100%) rotate(45deg); }
+            100% { transform: translateX(100%) translateY(100%) rotate(45deg); }
+        }
+        
+        .code-accent {
+            color: #00ff88;
+            font-family: 'Courier New', monospace;
+        }
+    </style>
+</head>
+<body style="background: #1a1a2e; padding: 50px;">
+    <div class="logo-container">
+        <div class="tech-elements">
+            {API}<br>
+            [DB]<br>
+            &lt;UI&gt;
+        </div>
+        
+        <div class="logo-icon">
+            <div class="chef-hat"></div>
+        </div>
+        
+        <div class="logo-text">
+            <h1 class="main-title">
+                מתכונ<span class="code-accent">טק</span>
+            </h1>
+            <p class="subtitle">Smart Cooking Platform</p>
+        </div>
+    </div>
+    
+    <!-- גרסה חלופית -->
+    <div style="margin-top: 40px;">
+        <div class="logo-container" style="background: linear-gradient(135deg, #ff6b6b 0%, #ee5a24 100%);">
+            <div class="logo-icon">
+                <div style="font-size: 48px; color: white; text-shadow: 2px 2px 4px rgba(0,0,0,0.3);">
+                    🧑‍💻👨‍🍳
+                </div>
+            </div>
+            <div class="logo-text">
+                <h1 class="main-title">
+                    ביט<span style="color: #FFD700;">בייט</span>
+                </h1>
+                <p class="subtitle">Code Your Taste</p>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

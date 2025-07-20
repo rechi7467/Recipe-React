@@ -1,0 +1,507 @@
+<!DOCTYPE html>
+<html dir="rtl" lang="he">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FlavorFile - לוגו תלת מימדי</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@800;900&family=Poppins:wght@700;800;900&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary: #ff3366;
+            --secondary: #33ccff;
+            --accent: #ffcc00;
+            --dark: #111111;
+            --light: #ffffff;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            background: radial-gradient(ellipse at center, #1a1a2e 0%, #0f0f1a 100%);
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            overflow-x: hidden;
+            padding: 20px;
+            font-family: 'Poppins', sans-serif;
+        }
+        
+        .scene {
+            width: 100%;
+            max-width: 800px;
+            height: 400px;
+            perspective: 1000px;
+            margin: 50px auto;
+            position: relative;
+        }
+        
+        .cube {
+            width: 100%;
+            height: 100%;
+            position: relative;
+            transform-style: preserve-3d;
+            transform: translateZ(-200px) rotateX(15deg) rotateY(-15deg);
+            animation: rotate 20s infinite linear;
+        }
+        
+        .cube-face {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 5rem;
+            font-weight: 900;
+            color: var(--light);
+            text-shadow: 0 0 20px rgba(255, 255, 255, 0.5);
+            background: rgba(0, 0, 0, 0.8);
+            border: 2px solid var(--primary);
+            box-shadow: 0 0 20px var(--primary);
+            overflow: hidden;
+        }
+        
+        .front { transform: translateZ(200px); }
+        .back { transform: rotateY(180deg) translateZ(200px); }
+        .right { transform: rotateY(90deg) translateZ(400px); }
+        .left { transform: rotateY(-90deg) translateZ(400px); }
+        .top { transform: rotateX(90deg) translateZ(200px); }
+        .bottom { transform: rotateX(-90deg) translateZ(200px); }
+        
+        .logo-3d {
+            position: relative;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            transform-style: preserve-3d;
+        }
+        
+        .logo-text {
+            font-size: 5rem;
+            font-weight: 900;
+            font-family: 'Montserrat', sans-serif;
+            color: var(--light);
+            text-shadow: 
+                0 0 10px rgba(255, 255, 255, 0.5),
+                0 5px 15px rgba(0, 0, 0, 0.5);
+            position: relative;
+            transform-style: preserve-3d;
+        }
+        
+        .logo-text span {
+            display: inline-block;
+            animation: float 3s ease-in-out infinite;
+        }
+        
+        .logo-text span:nth-child(1) { animation-delay: 0.1s; }
+        .logo-text span:nth-child(2) { animation-delay: 0.2s; }
+        .logo-text span:nth-child(3) { animation-delay: 0.3s; }
+        .logo-text span:nth-child(4) { animation-delay: 0.4s; }
+        .logo-text span:nth-child(5) { animation-delay: 0.5s; }
+        .logo-text span:nth-child(6) { animation-delay: 0.6s; }
+        .logo-text span:nth-child(7) { animation-delay: 0.7s; }
+        .logo-text span:nth-child(8) { animation-delay: 0.8s; }
+        .logo-text span:nth-child(9) { animation-delay: 0.9s; }
+        .logo-text span:nth-child(10) { animation-delay: 1.0s; }
+        
+        .flavor {
+            color: var(--primary);
+            text-shadow: 
+                0 0 10px var(--primary),
+                0 0 20px var(--primary),
+                0 0 30px var(--primary);
+        }
+        
+        .file {
+            color: var(--secondary);
+            text-shadow: 
+                0 0 10px var(--secondary),
+                0 0 20px var(--secondary),
+                0 0 30px var(--secondary);
+        }
+        
+        .slogan {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--light);
+            margin-top: 20px;
+            text-shadow: 0 0 10px rgba(255, 255, 255, 0.5);
+            position: relative;
+            transform: translateZ(50px);
+            animation: pulse 2s infinite alternate;
+        }
+        
+        .particles {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+        }
+        
+        .particle {
+            position: absolute;
+            background: var(--primary);
+            border-radius: 50%;
+            animation: particleFloat 10s infinite linear;
+        }
+        
+        .particle:nth-child(even) {
+            background: var(--secondary);
+        }
+        
+        .particle:nth-child(3n) {
+            background: var(--accent);
+        }
+        
+        .reflection {
+            position: absolute;
+            bottom: -100px;
+            left: 50%;
+            transform: translateX(-50%) scaleY(-0.2) blur(10px);
+            width: 80%;
+            height: 100px;
+            background: linear-gradient(to bottom, rgba(255, 51, 102, 0.3), transparent);
+            border-radius: 50%;
+            filter: blur(10px);
+            opacity: 0.5;
+            animation: reflection 3s infinite alternate;
+        }
+        
+        .hologram {
+            position: relative;
+            width: 100%;
+            max-width: 600px;
+            height: 300px;
+            margin: 100px auto;
+            perspective: 1000px;
+        }
+        
+        .hologram-container {
+            width: 100%;
+            height: 100%;
+            position: relative;
+            transform-style: preserve-3d;
+            animation: hologramFloat 6s ease-in-out infinite;
+        }
+        
+        .hologram-base {
+            position: absolute;
+            bottom: -50px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80%;
+            height: 20px;
+            background: radial-gradient(ellipse at center, var(--primary) 0%, transparent 70%);
+            border-radius: 50%;
+            filter: blur(10px);
+            opacity: 0.5;
+            animation: baseGlow 2s infinite alternate;
+        }
+        
+        .hologram-lines {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: 
+                repeating-linear-gradient(
+                    0deg,
+                    transparent,
+                    transparent 2px,
+                    rgba(51, 204, 255, 0.1) 2px,
+                    rgba(51, 204, 255, 0.1) 4px
+                );
+            border-radius: 10px;
+            animation: scanline 3s linear infinite;
+        }
+        
+        .hologram-content {
+            width: 100%;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            background: rgba(0, 0, 0, 0.2);
+            border-radius: 10px;
+            border: 1px solid rgba(51, 204, 255, 0.3);
+            box-shadow: 0 0 30px rgba(51, 204, 255, 0.3);
+            overflow: hidden;
+            position: relative;
+        }
+        
+        .hologram-content::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: 
+                radial-gradient(circle at center, rgba(51, 204, 255, 0.1) 0%, transparent 70%),
+                linear-gradient(to right, transparent, rgba(51, 204, 255, 0.2), transparent);
+            animation: hologramGlow 3s infinite alternate;
+        }
+        
+        .hologram-text {
+            font-size: 4rem;
+            font-weight: 900;
+            color: rgba(255, 255, 255, 0.9);
+            text-shadow: 0 0 20px var(--secondary);
+            position: relative;
+            z-index: 2;
+            transform-style: preserve-3d;
+            transform: translateZ(50px);
+        }
+        
+        .hologram-slogan {
+            font-size: 1.2rem;
+            font-weight: 700;
+            color: rgba(255, 255, 255, 0.8);
+            margin-top: 20px;
+            text-shadow: 0 0 10px var(--secondary);
+            position: relative;
+            z-index: 2;
+            transform: translateZ(30px);
+        }
+        
+        .hologram-glitch {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(51, 204, 255, 0.1);
+            opacity: 0;
+            z-index: 1;
+            animation: hologramGlitch 5s infinite;
+        }
+        
+        @keyframes rotate {
+            0% { transform: translateZ(-200px) rotateX(15deg) rotateY(0deg); }
+            100% { transform: translateZ(-200px) rotateX(15deg) rotateY(360deg); }
+        }
+        
+        @keyframes float {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-10px); }
+        }
+        
+        @keyframes pulse {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.7; }
+        }
+        
+        @keyframes particleFloat {
+            0% {
+                transform: translate(0, 0) rotate(0deg);
+                opacity: 0;
+            }
+            10% {
+                opacity: 1;
+            }
+            90% {
+                opacity: 1;
+            }
+            100% {
+                transform: translate(var(--tx), var(--ty)) rotate(360deg);
+                opacity: 0;
+            }
+        }
+        
+        @keyframes reflection {
+            0%, 100% { opacity: 0.3; transform: translateX(-50%) scaleY(-0.2) blur(10px); }
+            50% { opacity: 0.5; transform: translateX(-50%) scaleY(-0.25) blur(8px); }
+        }
+        
+        @keyframes hologramFloat {
+            0%, 100% { transform: translateY(0) rotateX(0deg); }
+            50% { transform: translateY(-20px) rotateX(5deg); }
+        }
+        
+        @keyframes baseGlow {
+            0%, 100% { opacity: 0.3; width: 80%; }
+            50% { opacity: 0.5; width: 85%; }
+        }
+        
+        @keyframes scanline {
+            0% { background-position: 0 0; }
+            100% { background-position: 0 100%; }
+        }
+        
+        @keyframes hologramGlow {
+            0%, 100% { opacity: 0.5; }
+            50% { opacity: 0.8; }
+        }
+        
+        @keyframes hologramGlitch {
+            0%, 100% { opacity: 0; }
+            5%, 10% { opacity: 0.3; transform: translate(5px, 0); }
+            5.5%, 10.5% { opacity: 0; transform: translate(0, 0); }
+            20%, 25% { opacity: 0.3; transform: translate(-5px, 5px); }
+            20.5%, 25.5% { opacity: 0; transform: translate(0, 0); }
+            50%, 55% { opacity: 0.3; transform: translate(0, -5px); }
+            50.5%, 55.5% { opacity: 0; transform: translate(0, 0); }
+            80%, 85% { opacity: 0.3; transform: translate(5px, 5px); }
+            80.5%, 85.5% { opacity: 0; transform: translate(0, 0); }
+        }
+        
+        /* Generate particles */
+        .particle:nth-child(1) { --tx: 100px; --ty: -200px; width: 5px; height: 5px; top: 50%; left: 20%; animation-duration: 7s; }
+        .particle:nth-child(2) { --tx: -150px; --ty: -150px; width: 7px; height: 7px; top: 30%; left: 80%; animation-duration: 9s; }
+        .particle:nth-child(3) { --tx: 200px; --ty: -100px; width: 4px; height: 4px; top: 70%; left: 10%; animation-duration: 8s; }
+        .particle:nth-child(4) { --tx: -120px; --ty: -220px; width: 6px; height: 6px; top: 40%; left: 60%; animation-duration: 10s; }
+        .particle:nth-child(5) { --tx: 180px; --ty: -180px; width: 5px; height: 5px; top: 60%; left: 30%; animation-duration: 11s; }
+        .particle:nth-child(6) { --tx: -200px; --ty: -120px; width: 8px; height: 8px; top: 20%; left: 50%; animation-duration: 9s; }
+        .particle:nth-child(7) { --tx: 150px; --ty: -250px; width: 4px; height: 4px; top: 80%; left: 40%; animation-duration: 12s; }
+        .particle:nth-child(8) { --tx: -180px; --ty: -200px; width: 6px; height: 6px; top: 35%; left: 75%; animation-duration: 8s; }
+        .particle:nth-child(9) { --tx: 220px; --ty: -150px; width: 5px; height: 5px; top: 65%; left: 25%; animation-duration: 10s; }
+        .particle:nth-child(10) { --tx: -150px; --ty: -180px; width: 7px; height: 7px; top: 45%; left: 85%; animation-duration: 11s; }
+        
+        /* Responsive */
+        @media (max-width: 768px) {
+            .scene {
+                height: 300px;
+            }
+            
+            .logo-text {
+                font-size: 3.5rem;
+            }
+            
+            .slogan {
+                font-size: 1.2rem;
+            }
+            
+            .hologram {
+                height: 250px;
+            }
+            
+            .hologram-text {
+                font-size: 3rem;
+            }
+            
+            .hologram-slogan {
+                font-size: 1rem;
+            }
+        }
+        
+        @media (max-width: 480px) {
+            .scene {
+                height: 200px;
+            }
+            
+            .logo-text {
+                font-size: 2.5rem;
+            }
+            
+            .slogan {
+                font-size: 1rem;
+            }
+            
+            .hologram {
+                height: 200px;
+            }
+            
+            .hologram-text {
+                font-size: 2.2rem;
+            }
+            
+            .hologram-slogan {
+                font-size: 0.9rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- 3D Cube -->
+    <div class="scene">
+        <div class="cube">
+            <div class="cube-face front">
+                <div class="logo-3d">
+                    <div class="logo-text">
+                        <span class="flavor">F</span><span class="flavor">l</span><span class="flavor">a</span><span class="flavor">v</span><span class="flavor">o</span><span class="flavor">r</span><span class="file">F</span><span class="file">i</span><span class="file">l</span><span class="file">e</span>
+                    </div>
+                    <div class="slogan">כל מתכון במקומו!</div>
+                </div>
+            </div>
+            <div class="cube-face back">
+                <div class="logo-3d">
+                    <div class="logo-text">
+                        <span class="file">F</span><span class="file">l</span><span class="file">a</span><span class="file">v</span><span class="file">o</span><span class="file">r</span><span class="flavor">F</span><span class="flavor">i</span><span class="flavor">l</span><span class="flavor">e</span>
+                    </div>
+                    <div class="slogan">כל מתכון במקומו!</div>
+                </div>
+            </div>
+            <div class="cube-face right">
+                <div class="logo-3d">
+                    <div class="logo-text">
+                        <span class="flavor">F</span><span class="file">F</span>
+                    </div>
+                </div>
+            </div>
+            <div class="cube-face left">
+                <div class="logo-3d">
+                    <div class="logo-text">
+                        <span class="file">F</span><span class="flavor">F</span>
+                    </div>
+                </div>
+            </div>
+            <div class="cube-face top">
+                <div class="logo-3d">
+                    <div class="logo-text">
+                        <span class="flavor">F</span><span class="file">F</span>
+                    </div>
+                </div>
+            </div>
+            <div class="cube-face bottom">
+                <div class="logo-3d">
+                    <div class="logo-text">
+                        <span class="file">F</span><span class="flavor">F</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="particles">
+            <div class="particle"></div>
+            <div class="particle"></div>
+            <div class="particle"></div>
+            <div class="particle"></div>
+            <div class="particle"></div>
+            <div class="particle"></div>
+            <div class="particle"></div>
+            <div class="particle"></div>
+            <div class="particle"></div>
+            <div class="particle"></div>
+        </div>
+        
+        <div class="reflection"></div>
+    </div>
+    
+    <!-- Hologram -->
+    <div class="hologram">
+        <div class="hologram-container">
+            <div class="hologram-base"></div>
+            <div class="hologram-content">
+                <div class="hologram-lines"></div>
+                <div class="hologram-text">
+                    <span class="flavor">Flavor</span><span class="file">File</span>
+                </div>
+                <div class="hologram-slogan">כל מתכון במקומו!</div>
+                <div class="hologram-glitch"></div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

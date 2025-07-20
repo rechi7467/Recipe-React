@@ -1,0 +1,348 @@
+<!DOCTYPE html>
+<html dir="rtl" lang="he">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>לוגו באנגלית עם הסבר בעברית</title>
+    <style>
+        body {
+            background: linear-gradient(135deg, #1e3c72 0%, #2a5298 100%);
+            padding: 50px;
+            margin: 0;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        .logo-container {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: linear-gradient(135deg, #ff6b6b 0%, #ee5a24 100%);
+            padding: 30px;
+            border-radius: 25px;
+            box-shadow: 
+                0 20px 40px rgba(255, 107, 107, 0.4),
+                inset 0 1px 0 rgba(255,255,255,0.2);
+            max-width: 450px;
+            margin: 20px auto;
+            position: relative;
+            overflow: hidden;
+            transition: transform 0.3s ease;
+        }
+
+        .logo-container:hover {
+            transform: scale(1.05);
+        }
+
+        .logo-container::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: linear-gradient(45deg, transparent, rgba(255,255,255,0.1), transparent);
+            transform: rotate(45deg);
+            animation: shine 4s infinite;
+        }
+
+        .logo-icon {
+            position: relative;
+            margin-left: 25px;
+            z-index: 2;
+        }
+
+        .cooking-pot {
+            width: 70px;
+            height: 50px;
+            background: #2c3e50;
+            border-radius: 10px 10px 25px 25px;
+            position: relative;
+            animation: cooking 2s ease-in-out infinite;
+        }
+
+        .cooking-pot::before {
+            content: '';
+            position: absolute;
+            top: -8px;
+            left: 10px;
+            width: 50px;
+            height: 8px;
+            background: #34495e;
+            border-radius: 10px;
+        }
+
+        .cooking-pot::after {
+            content: '';
+            position: absolute;
+            top: -15px;
+            left: -8px;
+            width: 15px;
+            height: 25px;
+            border: 3px solid #34495e;
+            border-radius: 15px;
+            border-right: none;
+        }
+
+        .steam {
+            position: absolute;
+            top: -25px;
+            left: 20px;
+            width: 30px;
+            height: 30px;
+        }
+
+        .steam::before,
+        .steam::after {
+            content: '💨';
+            position: absolute;
+            font-size: 16px;
+            animation: steam-rise 1.5s ease-in-out infinite;
+        }
+
+        .steam::after {
+            left: 15px;
+            animation-delay: 0.5s;
+        }
+
+        .logo-text {
+            position: relative;
+            z-index: 2;
+        }
+
+        .main-title {
+            color: white;
+            font-size: 36px;
+            font-weight: 900;
+            text-shadow: 3px 3px 6px rgba(0,0,0,0.4);
+            margin: 0;
+            letter-spacing: -1px;
+            animation: glow 2s ease-in-out infinite alternate;
+            font-family: 'Arial', sans-serif;
+        }
+
+        .highlight {
+            color: #FFD700;
+            text-shadow: 0 0 20px rgba(255, 215, 0, 0.5);
+        }
+
+        .subtitle {
+            color: #FFE4B5;
+            font-size: 16px;
+            font-weight: 600;
+            margin: 8px 0 0 0;
+            letter-spacing: 1px;
+            opacity: 0.9;
+            font-family: 'Arial', sans-serif;
+        }
+
+        .floating-elements {
+            position: absolute;
+            top: 15px;
+            right: 15px;
+            font-size: 20px;
+            animation: float 3s ease-in-out infinite;
+        }
+
+        .floating-elements span {
+            display: inline-block;
+            margin: 0 5px;
+            animation: bounce 2s ease-in-out infinite;
+        }
+
+        .floating-elements span:nth-child(2) {
+            animation-delay: 0.3s;
+        }
+
+        .floating-elements span:nth-child(3) {
+            animation-delay: 0.6s;
+        }
+
+        @keyframes cooking {
+            0%, 100% { transform: translateY(0px) rotate(0deg); }
+            25% { transform: translateY(-3px) rotate(1deg); }
+            75% { transform: translateY(-3px) rotate(-1deg); }
+        }
+
+        @keyframes steam-rise {
+            0% { 
+                opacity: 1; 
+                transform: translateY(0px) scale(1); 
+            }
+            100% { 
+                opacity: 0; 
+                transform: translateY(-20px) scale(1.5); 
+            }
+        }
+
+        @keyframes shine {
+            0% { transform: translateX(-100%) translateY(-100%) rotate(45deg); }
+            100% { transform: translateX(100%) translateY(100%) rotate(45deg); }
+        }
+
+        @keyframes glow {
+            0% { text-shadow: 3px 3px 6px rgba(0,0,0,0.4); }
+            100% { text-shadow: 3px 3px 6px rgba(0,0,0,0.4), 0 0 25px rgba(255,255,255,0.3); }
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-8px); }
+        }
+
+        @keyframes bounce {
+            0%, 20%, 50%, 80%, 100% { transform: translateY(0); }
+            40% { transform: translateY(-8px); }
+            60% { transform: translateY(-4px); }
+        }
+
+        /* גרסאות שונות */
+        .version-2 {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            margin-top: 30px;
+        }
+
+        .version-3 {
+            background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+            margin-top: 30px;
+        }
+
+        .version-4 {
+            background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);
+            margin-top: 30px;
+        }
+
+        .version-5 {
+            background: linear-gradient(135deg, #43e97b 0%, #38f9d7 100%);
+            margin-top: 30px;
+        }
+
+        .version-6 {
+            background: linear-gradient(135deg, #fa709a 0%, #fee140 100%);
+            margin-top: 30px;
+        }
+    </style>
+</head>
+<body>
+    <!-- גרסה 1: BiteByte -->
+    <div class="logo-container">
+        <div class="floating-elements">
+            <span>🍽️</span>
+            <span>⭐</span>
+            <span>🔥</span>
+        </div>
+        
+        <div class="logo-icon">
+            <div class="cooking-pot">
+                <div class="steam"></div>
+            </div>
+        </div>
+        
+        <div class="logo-text">
+            <h1 class="main-title">
+                Bite<span class="highlight">Byte</span>
+            </h1>
+            <p class="subtitle">הבסיס לכל טעם טוב</p>
+        </div>
+    </div>
+
+    <!-- גרסה 2: TasteMatic -->
+    <div class="logo-container version-2">
+        <div class="floating-elements">
+            <span>🎯</span>
+            <span>✨</span>
+            <span>🍴</span>
+        </div>
+        
+        <div class="logo-icon">
+            <div style="font-size: 60px; animation: bounce 2s infinite;">🎯</div>
+        </div>
+        
+        <div class="logo-text">
+            <h1 class="main-title">
+                Taste<span class="highlight">Matic</span>
+            </h1>
+            <p class="subtitle">טעמים שמגיעים מעצמם</p>
+        </div>
+    </div>
+
+    <!-- גרסה 3: CookLite -->
+    <div class="logo-container version-3">
+        <div class="floating-elements">
+            <span>💫</span>
+            <span>🌟</span>
+            <span>✨</span>
+        </div>
+        
+        <div class="logo-icon">
+            <div style="font-size: 60px; animation: float 3s infinite;">🌟</div>
+        </div>
+        
+        <div class="logo-text">
+            <h1 class="main-title">
+                Cook<span class="highlight">Lite</span>
+            </h1>
+            <p class="subtitle">בישול קל וטעים לכולם</p>
+        </div>
+    </div>
+
+    <!-- גרסה 4: FlavorPlus -->
+    <div class="logo-container version-4">
+        <div class="floating-elements">
+            <span>🚀</span>
+            <span>💎</span>
+            <span>🏆</span>
+        </div>
+        
+        <div class="logo-icon">
+            <div style="font-size: 60px; animation: glow 2s infinite alternate;">💎</div>
+        </div>
+        
+        <div class="logo-text">
+            <h1 class="main-title">
+                Flavor<span class="highlight">Plus</span>
+            </h1>
+            <p class="subtitle">תמיד יותר מסתם טעם</p>
+        </div>
+    </div>
+
+    <!-- גרסה 5: RecipeMax -->
+    <div class="logo-container version-5">
+        <div class="floating-elements">
+            <span>📈</span>
+            <span>🎊</span>
+            <span>🎉</span>
+        </div>
+        
+        <div class="logo-icon">
+            <div style="font-size: 60px; animation: bounce 2s infinite;">📈</div>
+        </div>
+        
+        <div class="logo-text">
+            <h1 class="main-title">
+                Recipe<span class="highlight">Max</span>
+            </h1>
+            <p class="subtitle">המקסימום של כל מתכון</p>
+        </div>
+    </div>
+
+    <!-- גרסה 6: FlavorHub -->
+    <div class="logo-container version-6">
+        <div class="floating-elements">
+            <span>🌐</span>
+            <span>🔗</span>
+            <span>💫</span>
+        </div>
+        
+        <div class="logo-icon">
+            <div style="font-size: 60px; animation: float 3s infinite;">🌐</div>
+        </div>
+        
+        <div class="logo-text">
+            <h1 class="main-title">
+                Flavor<span class="highlight">Hub</span>
+            </h1>
+            <p class="subtitle">המרכז של כל הטעמים</p>
+        </div>
+    </div>
+</body>
+</html>
